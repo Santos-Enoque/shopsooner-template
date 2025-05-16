@@ -3,8 +3,11 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:vgv/config/app_config.dart';
 
+/// BLoC observer to log state changes and errors
 class AppBlocObserver extends BlocObserver {
+  /// Create a new instance
   const AppBlocObserver();
 
   @override
@@ -20,14 +23,18 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+/// Bootstrap app with environment configuration
+Future<void> bootstrap(
+  FutureOr<Widget> Function() builder, {
+  required AppConfig config,
+}) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = const AppBlocObserver();
 
-  // Add cross-flavor configuration here
+  // Inject app config into dependency injection
 
   runApp(await builder());
 }
