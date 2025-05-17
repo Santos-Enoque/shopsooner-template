@@ -4,6 +4,8 @@ import 'package:vgv/dependency_injection.dart';
 import 'package:vgv/features/counter/cubit/counter_cubit.dart';
 import 'package:vgv/l10n/l10n.dart';
 import 'package:vgv/navigation/app_router.dart';
+import 'package:vgv/shared/language/cubit/language_cubit.dart';
+import 'package:vgv/shared/theme/cubit/theme_cubit.dart';
 import 'package:vgv/shared/theme/themes/dark_theme.dart';
 import 'package:vgv/shared/theme/themes/light_theme.dart';
 
@@ -19,6 +21,12 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<CounterCubit>(),
         ),
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LanguageCubit(),
+        ),
         // Add additional BlocProviders here
       ],
       child: Builder(
@@ -27,7 +35,8 @@ class App extends StatelessWidget {
             title: 'VGV App',
             theme: getLightTheme(),
             darkTheme: getDarkTheme(),
-            themeMode: ThemeMode.system,
+            themeMode: context.watch<ThemeCubit>().state,
+            locale: context.watch<LanguageCubit>().state,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: appRouter,

@@ -1,7 +1,11 @@
 {
     "@@locale": "es",
     "counterAppBarTitle": "Contador",
+    "welcomeMessage": "Bienvenido a la Aplicación Contador",
     "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+        "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "@welcomeMessage": {
+        "description": "Welcome message shown in the Counter Page"
     }
 }
