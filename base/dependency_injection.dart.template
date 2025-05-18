@@ -1,0 +1,22 @@
+import 'package:get_it/get_it.dart';
+{{base_imports}}
+{{feature_imports}}
+import 'package:{{project_name}}/shared/language/cubit/language_cubit.dart';
+import 'package:{{project_name}}/shared/theme/cubit/theme_cubit.dart';
+import 'package:{{project_name}}/features/home/presentation/cubit/counter_cubit.dart';
+
+final GetIt sl = GetIt.instance;
+
+Future<void> configureDependencies() async {
+  {{feature_initialization_calls}}
+  _initSharedFeatures();
+  {{additional_initialization_calls}}
+}
+
+{{feature_initialization_methods}}
+
+void _initSharedFeatures() {
+  sl.registerLazySingleton(() => ThemeCubit());
+  sl.registerLazySingleton(() => LanguageCubit());
+  sl.registerFactory(() => CounterCubit());
+} 

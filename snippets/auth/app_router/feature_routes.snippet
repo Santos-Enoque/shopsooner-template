@@ -1,0 +1,20 @@
+// @priority: 10
+
+      GoRoute(
+        path: AppRoutes.auth,
+        builder: (context, state) => const AuthScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgotPassword,
+        builder: (context, state) => const Scaffold(
+          body: Center(child: Text('Forgot Password - To be implemented')),
+        ),
+      ), 

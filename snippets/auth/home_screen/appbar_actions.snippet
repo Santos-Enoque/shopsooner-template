@@ -1,0 +1,8 @@
+// @priority: 10
+
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthBloc>().add(AuthLogoutRequested());
+            },
+          ), 

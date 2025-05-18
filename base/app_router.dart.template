@@ -1,0 +1,33 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+{{base_imports}}
+{{feature_imports}}
+import 'package:{{project_name}}/features/home/presentation/screen/home_screen.dart';
+import 'package:{{project_name}}/navigation/routes.dart';
+
+class AppRouter {
+  {{router_constructor}}
+
+  late final GoRouter router = GoRouter(
+    initialLocation: AppRoutes.home,
+    debugLogDiagnostics: true,
+    {{router_redirect}}
+    {{router_refresh_stream}}
+    routes: [
+      {{feature_routes}}
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomeScreen(),
+      ),
+      {{additional_routes}}
+    ],
+    errorBuilder: (context, state) => Scaffold(
+      body: Center(
+        child: Text('Route not found: ${state.matchedLocation}'),
+      ),
+    ),
+  );
+}
+
+{{additional_classes}} 

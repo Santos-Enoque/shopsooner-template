@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:{{project_name}}/dependency_injection.dart';
+{{base_imports}}
+{{feature_imports}}
+import 'package:{{project_name}}/l10n/l10n.dart';
+import 'package:{{project_name}}/navigation/app_router.dart';
+import 'package:{{project_name}}/shared/language/cubit/language_cubit.dart';
+import 'package:{{project_name}}/shared/theme/cubit/theme_cubit.dart';
+import 'package:{{project_name}}/shared/theme/themes/dark_theme.dart';
+import 'package:{{project_name}}/shared/theme/themes/light_theme.dart';
+import 'package:{{project_name}}/features/home/presentation/cubit/counter_cubit.dart';
+
+/// Main application widget that configures the app-wide settings
+class App extends StatelessWidget {
+  /// Creates a new App instance
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        {{global_providers}}
+        BlocProvider(
+          create: (context) => sl<CounterCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<ThemeCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<LanguageCubit>(),
+        ),
+        {{feature_providers}}
+        // Add additional BlocProviders here
+      ],
+      child: Builder(
+        builder: (context) {
+          {{pre_router_code}}
+          return MaterialApp.router(
+            title: '{{project_name}}',
+            theme: getLightTheme(),
+            darkTheme: getDarkTheme(),
+            themeMode: context.watch<ThemeCubit>().state,
+            locale: context.watch<LanguageCubit>().state,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: {{router_config}},
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      ),
+    );
+  }
+} 

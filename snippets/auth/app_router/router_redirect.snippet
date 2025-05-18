@@ -1,0 +1,54 @@
+// @priority: 10
+
+redirect: (BuildContext context, GoRouterState state) {
+  final authState = authBloc.state;
+  final isAuthenticated = authState.status == AuthStatus.authenticated;
+  final isAuthLoading = authState.status == AuthStatus.loading;
+  final isInitial = authState.status == AuthStatus.initial;
+
+  // Define route groups
+  final isAuthRoute = state.matchedLocation.startsWith('/auth');
+  final isLoginRoute = state.matchedLocation == AppRoutes.login;
+  final isRegisterRoute = state.matchedLocation == AppRoutes.register;
+  final isForgotPasswordRoute =
+      state.matchedLocation == AppRoutes.forgotPassword;
+  final isPublicRoute = isAuthRoute ||
+      isLoginRoute ||
+      isRegisterRoute ||
+      isForgotPasswordRoute;
+
+  // Debug print to help diagnose issues
+  debugPrint('Current route: ${state.matchedLocation}');
+  debugPrint('Auth status: ${authState.status}');
+  debugPrint('Is authenticated: $isAuthenticated');
+
+  // If auth is loading or initial, allow current navigation
+  if (isAuthLoading || isInitial) {
+    debugPrint('Auth is loading or initial, allowing current navigation');
+    return null;
+  }
+
+  // If on the auth landing page, direct to login
+  if (state.matchedLocation == AppRoutes.auth) {
+    debugPrint('On auth landing page, redirecting to login');
+    return AppRoutes.login;
+  }
+
+  // If authenticated and trying to access auth routes, redirect to home
+  if (isAuthenticated && isPublicRoute) {
+    debugPrint(
+        'Authenticated user trying to access auth route, redirecting to home');
+    return AppRoutes.home;
+  }
+
+  // If not authenticated and trying to access protected route, redirect to login
+  if (!isAuthenticated && !isPublicRoute) {
+    debugPrint(
+        'Unauthenticated user trying to access protected route, redirecting to login');
+    return AppRoutes.login;
+  }
+
+  // No redirection needed
+  debugPrint('No redirection needed');
+  return null;
+}, 

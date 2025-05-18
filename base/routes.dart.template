@@ -1,0 +1,12 @@
+/// Application routes
+class AppRoutes {
+  /// Splash screen route
+  static const splash = '/splash';
+
+  /// Home screen route
+  static const home = '/';
+
+  {{feature_routes}}
+  
+  {{additional_routes}}
+} 

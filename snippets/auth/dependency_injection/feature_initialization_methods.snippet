@@ -1,0 +1,36 @@
+// @priority: 10
+// @provider: supabase
+
+Future<void> _initSupabase() async {
+  await Supabase.initialize(
+    url: EnvLoader.supabaseUrl,
+    anonKey: EnvLoader.supabaseAnonKey,
+  );
+  sl.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
+}
+
+void _initAuthFeature() {
+  sl.registerFactory(
+    () => AuthBloc(
+      checkAuthStatus: sl(),
+      loginUser: sl(),
+      logoutUser: sl(),
+      registerUser: sl(),
+      resendVerificationEmail: sl(),
+    ),
+  );
+  sl.registerFactory(() => LoginBloc(authBloc: sl()));
+  sl.registerFactory(() => RegisterBloc(authBloc: sl()));
+  sl.registerLazySingleton(() => CheckAuthStatusUseCase(sl()));
+  sl.registerLazySingleton(() => LoginUser(sl()));
+  sl.registerLazySingleton(() => LogoutUser(sl()));
+  sl.registerLazySingleton(() => RegisterUser(sl()));
+  sl.registerLazySingleton(() => ResendVerificationEmail(sl()));
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(dataSource: sl()),
+  );
+  sl.registerLazySingleton<AuthDataSource>(
+    () => AuthDataSourceImpl(sl()),
+  );
+
+} 
