@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
-import 'package:tictask/app/routes/routes.dart';
-import 'package:tictask/app/theme/colors.dart';
-import 'package:tictask/features/auth/domain/models/models.dart';
-import 'package:tictask/features/auth/presentation/blocs/auth/auth_barrel.dart';
-import 'package:tictask/features/auth/presentation/blocs/register/register_barrel.dart';
-import 'package:tictask/features/auth/presentation/widgets/app_button.dart';
-import 'package:tictask/features/auth/presentation/widgets/app_text_field.dart';
+import 'package:ticktask/navigation/routes.dart';
+import 'package:ticktask/shared/theme/colors.dart';
+import 'package:ticktask/features/auth/domain/models/models.dart';
+import 'package:ticktask/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:ticktask/features/auth/presentation/blocs/register/register_barrel.dart';
+import 'package:ticktask/features/auth/presentation/widgets/app_button.dart';
+import 'package:ticktask/features/auth/presentation/widgets/app_text_field.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const routeName = '/register';
@@ -32,7 +32,7 @@ class RegisterScreen extends StatelessWidget {
               listener: (context, state) {
                 if (state.status == AuthStatus.authenticated) {
                   // Navigate directly to home on successful registration
-                  context.go(Routes.home);
+                  context.go(AppRoutes.home);
                 } else if (state.status == AuthStatus.failure) {
                   // The RegisterBloc already listens for auth failures
                 }
@@ -194,7 +194,7 @@ class RegisterForm extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // Navigate to login using GoRouter
-                      context.go(Routes.login);
+                      context.go(AppRoutes.login);
                     },
                     child: const Text(
                       'Sign in',

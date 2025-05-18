@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictask/app/theme/colors.dart';
+import 'package:ticktask/shared/theme/colors.dart';
 
 class AppTextField extends StatelessWidget {
   final String label;
