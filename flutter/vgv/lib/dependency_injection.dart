@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:vgv/config/app_config.dart';
 import 'package:vgv/core/services/http_service.dart';
-import 'package:vgv/features/counter/cubit/counter_cubit.dart';
+import 'package:vgv/features/home/presentation/cubit/counter_cubit.dart';
 import 'package:vgv/shared/repositories/user_repository.dart';
 
 /// Global service locator instance
@@ -31,4 +31,6 @@ Future<void> configureDependencies({
   getIt.registerFactory<CounterCubit>(
     () => CounterCubit(),
   );
+
 }
+

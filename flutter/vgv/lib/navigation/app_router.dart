@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vgv/features/counter/view/counter_page.dart';
+import 'package:vgv/features/home/presentation/screen/home_screen.dart';
 import 'package:vgv/navigation/routes.dart';
 import 'package:vgv/shared/screens/splash_screen.dart';
 
@@ -23,7 +23,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.home,
-      builder: (context, state) => const CounterPage(),
+      builder: (context, state) => const HomeScreen(),
     ),
   ],
 );

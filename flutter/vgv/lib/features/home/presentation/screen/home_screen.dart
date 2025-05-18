@@ -1,24 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vgv/features/counter/counter.dart';
+import 'package:vgv/features/home/presentation/cubit/counter_cubit.dart';
 import 'package:vgv/l10n/l10n.dart';
 import 'package:vgv/shared/language/cubit/language_cubit.dart';
 import 'package:vgv/shared/theme/cubit/theme_cubit.dart';
 
-class CounterPage extends StatelessWidget {
-  const CounterPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const CounterView(),
-    );
-  }
-}
-
-class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

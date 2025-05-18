@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv/dependency_injection.dart';
-import 'package:vgv/features/counter/cubit/counter_cubit.dart';
+import 'package:vgv/features/home/presentation/cubit/counter_cubit.dart';
 import 'package:vgv/l10n/l10n.dart';
 import 'package:vgv/navigation/app_router.dart';
 import 'package:vgv/shared/language/cubit/language_cubit.dart';
