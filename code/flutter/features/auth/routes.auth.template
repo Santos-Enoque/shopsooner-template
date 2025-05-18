@@ -1,0 +1,16 @@
+/// Application routes
+class AppRoutes {
+  /// Home route
+  static const home = '/home';
+  
+  /// Splash screen
+  static const splash = '/';
+  
+  /// Auth routes
+  static const auth = '/auth';
+  static const login = '/login';
+  static const register = '/register';
+  static const forgotPassword = '/forgot-password';
+  
+  // {{additional_routes}}
+}

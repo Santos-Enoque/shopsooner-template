@@ -1,0 +1,40 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+/// Helper to load environment configuration
+class EnvLoader {
+  /// Get environment configuration based on environment name
+
+  static Future<void> loadEnv(String environment) async {
+    String envFile;
+
+    switch (environment) {
+      case 'production':
+        envFile = '.env.production';
+        break;
+      case 'staging':
+        envFile = '.env.staging';
+        break;
+      case 'development':
+      default:
+        envFile = '.env.development';
+        break;
+    }
+
+    try {
+      await dotenv.load(fileName: envFile);
+      debugPrint('Loaded environment file: $envFile');
+    } catch (e) {
+      debugPrint('Error loading environment file: $e');
+      rethrow;
+    }
+  }
+
+  static String get environment => dotenv.env['ENVIRONMENT'] ?? 'development';
+
+  static bool get isDevelopment => environment == 'development';
+  static bool get isStaging => environment == 'staging';
+  static bool get isProduction => environment == 'production';
+  
+  // {{environment_variables}}
+}

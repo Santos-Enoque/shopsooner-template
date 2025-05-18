@@ -1,0 +1,42 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:{{project_name}}/features/home/presentation/screen/home_screen.dart';
+import 'package:{{project_name}}/navigation/routes.dart';
+
+class AppRouter {
+
+  late final GoRouter router = GoRouter(
+    initialLocation: AppRoutes.home,
+    debugLogDiagnostics: true,
+    routes: [
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomeScreen(),
+      ),
+    ],
+    errorBuilder: (context, state) => Scaffold(
+      body: Center(
+        child: Text('Route not found: ${state.matchedLocation}'),
+      ),
+    ),
+  );
+}
+
+/// Helper class to convert Stream to Listenable
+class GoRouterRefreshStream extends ChangeNotifier {
+  late final StreamSubscription<dynamic> _subscription;
+
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
+    _subscription = stream.asBroadcastStream().listen(
+          (dynamic _) => notifyListeners(),
+        );
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+}
