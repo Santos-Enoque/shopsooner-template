@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tictask/features/auth/domain/entities/user_entity.dart';
+import 'package:my_flutter_app/features/auth/domain/entities/user_entity.dart';
 
 enum AuthStatus { initial, loading, authenticated, unauthenticated, failure }
 

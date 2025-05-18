@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tictask/features/auth/data/repositories/auth_repository_impl.dart';
-import 'package:tictask/features/auth/domain/models/models.dart';
-import 'package:tictask/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:my_flutter_app/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:my_flutter_app/features/auth/domain/models/models.dart';
+import 'package:my_flutter_app/features/auth/presentation/blocs/auth/auth_barrel.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 

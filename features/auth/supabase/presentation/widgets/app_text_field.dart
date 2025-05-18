@@ -42,10 +42,10 @@ class AppTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: AppColors.darkOnSurface,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 8),
@@ -59,9 +59,9 @@ class AppTextField extends StatelessWidget {
           focusNode: focusNode,
           maxLines: maxLines,
           autofocus: autofocus,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: AppColors.darkOnSurface,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           decoration: InputDecoration(
             prefixIcon: prefix,
@@ -69,11 +69,11 @@ class AppTextField extends StatelessWidget {
             errorText: errorText,
             hintText: hintText,
             hintStyle: TextStyle(
-              color: AppColors.darkOnSurface.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
               fontSize: 16,
             ),
             filled: true,
-            fillColor: AppColors.darkSurfaceVariant,
+            fillColor: Theme.of(context).colorScheme.surfaceVariant,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 16,
@@ -84,15 +84,15 @@ class AppTextField extends StatelessWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: AppColors.darkError,
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.error,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: AppColors.darkPrimary,
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
                 width: 1,
               ),
             ),

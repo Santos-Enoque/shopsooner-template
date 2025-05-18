@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:tictask/features/auth/domain/models/models.dart';
+import 'package:my_flutter_app/features/auth/domain/models/models.dart';
 
 class LoginState extends Equatable {
   final Email email;

@@ -18,9 +18,9 @@ class AuthScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           backgroundColor: AppColors.darkBackground,
-          body: const Center(
+          body: Center(
             child: CircularProgressIndicator(
               color: AppColors.darkPrimary,
             ),

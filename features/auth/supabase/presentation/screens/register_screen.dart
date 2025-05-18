@@ -23,7 +23,6 @@ class RegisterScreen extends StatelessWidget {
         authBloc: context.read<AuthBloc>(),
       ),
       child: Scaffold(
-        backgroundColor: AppColors.darkBackground,
         body: MultiBlocListener(
           listeners: [
             BlocListener<AuthBloc, AuthState>(
@@ -88,24 +87,7 @@ class RegisterScreen extends StatelessWidget {
       );
 
       if (isNetworkError) {
-        // Show network settings dialog after a short delay
-        Future.delayed(const Duration(seconds: 1), () {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Network Issue'),
-              content: const Text(
-                'Please check your internet connection and try again.',
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        });
+        // No longer show AlertDialog for network issues; only show toast notification
       }
     } else {
       toastification.show(
@@ -143,21 +125,21 @@ class RegisterForm extends StatelessWidget {
             children: [
               const SizedBox(height: 40),
               // App logo or icon
-              const Center(
+              Center(
                 child: Icon(
                   Icons.check_circle_outline,
                   size: 80,
-                  color: AppColors.darkPrimary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               const SizedBox(height: 40),
               // Title
-              const Text(
+              Text(
                 'Create account',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.darkOnSurface,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               const SizedBox(height: 8),
@@ -165,7 +147,8 @@ class RegisterForm extends StatelessWidget {
                 'Sign up to get started',
                 style: TextStyle(
                   fontSize: 16,
-                  color: AppColors.darkOnSurface.withOpacity(0.7),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
                 ),
               ),
               const SizedBox(height: 48),
@@ -188,7 +171,10 @@ class RegisterForm extends StatelessWidget {
                   Text(
                     'Already have an account?',
                     style: TextStyle(
-                      color: AppColors.darkOnSurface.withOpacity(0.7),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.7),
                     ),
                   ),
                   TextButton(
@@ -196,10 +182,10 @@ class RegisterForm extends StatelessWidget {
                       // Navigate to login using GoRouter
                       context.go(AppRoutes.login);
                     },
-                    child: const Text(
+                    child: Text(
                       'Sign in',
                       style: TextStyle(
-                        color: AppColors.darkPrimary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

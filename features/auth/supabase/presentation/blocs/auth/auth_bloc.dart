@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tictask/features/auth/domain/entities/user_entity.dart';
-import 'package:tictask/features/auth/domain/usecases/check_auth_status_usecase.dart';
-import 'package:tictask/features/auth/domain/usecases/login_user.dart';
-import 'package:tictask/features/auth/domain/usecases/logout_user.dart';
-import 'package:tictask/features/auth/domain/usecases/register_user.dart';
-import 'package:tictask/features/auth/domain/usecases/resend_verification_email.dart';
+import 'package:my_flutter_app/features/auth/domain/entities/user_entity.dart';
+import 'package:my_flutter_app/features/auth/domain/usecases/check_auth_status_usecase.dart';
+import 'package:my_flutter_app/features/auth/domain/usecases/login_user.dart';
+import 'package:my_flutter_app/features/auth/domain/usecases/logout_user.dart';
+import 'package:my_flutter_app/features/auth/domain/usecases/register_user.dart';
+import 'package:my_flutter_app/features/auth/domain/usecases/resend_verification_email.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 

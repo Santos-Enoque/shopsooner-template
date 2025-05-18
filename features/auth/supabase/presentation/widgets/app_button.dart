@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vgv/shared/theme/colors.dart';
 
 enum AppButtonType { primary, secondary, text }
 
@@ -25,94 +24,97 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case AppButtonType.primary:
-        return _buildPrimaryButton();
+        return _buildPrimaryButton(context);
       case AppButtonType.secondary:
-        return _buildSecondaryButton();
+        return _buildSecondaryButton(context);
       case AppButtonType.text:
-        return _buildTextButton();
+        return _buildTextButton(context);
     }
   }
 
-  Widget _buildPrimaryButton() {
+  Widget _buildPrimaryButton(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       width: fullWidth ? double.infinity : null,
       height: 52,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.darkPrimary,
-          foregroundColor: AppColors.darkOnPrimary,
-          disabledBackgroundColor: AppColors.darkPrimary.withOpacity(0.4),
-          disabledForegroundColor: AppColors.darkOnPrimary.withOpacity(0.8),
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          disabledBackgroundColor: colorScheme.primary.withOpacity(0.4),
+          disabledForegroundColor: colorScheme.onPrimary.withOpacity(0.8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           elevation: 0,
         ),
         child: isLoading
-            ? const SizedBox(
+            ? SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator(
-                  color: AppColors.darkOnPrimary,
+                  color: colorScheme.onPrimary,
                   strokeWidth: 2,
                 ),
               )
-            : _buildButtonContent(AppColors.darkOnPrimary),
+            : _buildButtonContent(context, colorScheme.onPrimary),
       ),
     );
   }
 
-  Widget _buildSecondaryButton() {
+  Widget _buildSecondaryButton(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       width: fullWidth ? double.infinity : null,
       height: 52,
       child: OutlinedButton(
         onPressed: isLoading ? null : onPressed,
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.darkPrimary,
-          side: const BorderSide(color: AppColors.darkPrimary),
+          foregroundColor: colorScheme.primary,
+          side: BorderSide(color: colorScheme.primary),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: isLoading
-            ? const SizedBox(
+            ? SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator(
-                  color: AppColors.darkPrimary,
+                  color: colorScheme.primary,
                   strokeWidth: 2,
                 ),
               )
-            : _buildButtonContent(AppColors.darkPrimary),
+            : _buildButtonContent(context, colorScheme.primary),
       ),
     );
   }
 
-  Widget _buildTextButton() {
+  Widget _buildTextButton(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return TextButton(
       onPressed: isLoading ? null : onPressed,
       style: TextButton.styleFrom(
-        foregroundColor: AppColors.darkPrimary,
+        foregroundColor: colorScheme.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
       ),
       child: isLoading
-          ? const SizedBox(
+          ? SizedBox(
               width: 24,
               height: 24,
               child: CircularProgressIndicator(
-                color: AppColors.darkPrimary,
+                color: colorScheme.primary,
                 strokeWidth: 2,
               ),
             )
-          : _buildButtonContent(AppColors.darkPrimary),
+          : _buildButtonContent(context, colorScheme.primary),
     );
   }
 
-  Widget _buildButtonContent(Color color) {
+  Widget _buildButtonContent(BuildContext context, Color color) {
     if (icon != null) {
       return Row(
         mainAxisSize: MainAxisSize.min,
