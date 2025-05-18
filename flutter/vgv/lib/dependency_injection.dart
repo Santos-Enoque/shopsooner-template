@@ -26,6 +26,4 @@ Future<void> configureDependencies() async {
   getIt.registerFactory<CounterCubit>(
     () => CounterCubit(),
   );
-
 }
-

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ticktask/navigation/routes.dart';
-import 'package:ticktask/shared/theme/colors.dart';
+import 'package:vgv/navigation/routes.dart';
+import 'package:vgv/shared/theme/colors.dart';
 import 'package:toastification/toastification.dart';
-import 'package:ticktask/features/auth/domain/models/models.dart';
-import 'package:ticktask/features/auth/presentation/blocs/auth/auth_barrel.dart';
-import 'package:ticktask/features/auth/presentation/blocs/login/login_barrel.dart';
-import 'package:ticktask/features/auth/presentation/widgets/app_button.dart';
-import 'package:ticktask/features/auth/presentation/widgets/app_text_field.dart';
+import 'package:vgv/features/auth/domain/models/models.dart';
+import 'package:vgv/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:vgv/features/auth/presentation/blocs/login/login_barrel.dart';
+import 'package:vgv/features/auth/presentation/widgets/app_button.dart';
+import 'package:vgv/features/auth/presentation/widgets/app_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   static const routeName = '/login';

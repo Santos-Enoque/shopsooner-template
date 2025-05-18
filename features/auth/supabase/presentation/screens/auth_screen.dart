@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tictask/features/auth/presentation/blocs/auth/auth_barrel.dart';
-import 'package:ticktask/shared/theme/colors.dart';
+import 'package:vgv/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:vgv/shared/theme/colors.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';

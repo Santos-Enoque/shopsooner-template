@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ticktask/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:vgv/features/auth/presentation/blocs/auth/auth_barrel.dart';
 
 class EmailVerificationBanner extends StatelessWidget {
   final VoidCallback? onResendEmail;

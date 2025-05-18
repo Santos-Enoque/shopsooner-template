@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
-import 'package:ticktask/navigation/routes.dart';
-import 'package:ticktask/shared/theme/colors.dart';
-import 'package:ticktask/features/auth/domain/models/models.dart';
-import 'package:ticktask/features/auth/presentation/blocs/auth/auth_barrel.dart';
-import 'package:ticktask/features/auth/presentation/blocs/register/register_barrel.dart';
-import 'package:ticktask/features/auth/presentation/widgets/app_button.dart';
-import 'package:ticktask/features/auth/presentation/widgets/app_text_field.dart';
+import 'package:vgv/navigation/routes.dart';
+import 'package:vgv/shared/theme/colors.dart';
+import 'package:vgv/features/auth/domain/models/models.dart';
+import 'package:vgv/features/auth/presentation/blocs/auth/auth_barrel.dart';
+import 'package:vgv/features/auth/presentation/blocs/register/register_barrel.dart';
+import 'package:vgv/features/auth/presentation/widgets/app_button.dart';
+import 'package:vgv/features/auth/presentation/widgets/app_text_field.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const routeName = '/register';
