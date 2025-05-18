@@ -1,18 +1,40 @@
-import 'package:vgv/config/app_config.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Helper to load environment configuration
 class EnvLoader {
   /// Get environment configuration based on environment name
-  static AppConfig getConfig(String environment) {
+
+  static Future<void> loadEnv(String environment) async {
+    String envFile;
+
     switch (environment) {
-      case 'development':
-        return AppConfig.development;
-      case 'staging':
-        return AppConfig.staging;
       case 'production':
-        return AppConfig.production;
+        envFile = '.env.production';
+        break;
+      case 'staging':
+        envFile = '.env.staging';
+        break;
+      case 'development':
       default:
-        throw Exception('Unknown environment: $environment');
+        envFile = '.env.development';
+        break;
+    }
+
+    try {
+      await dotenv.load(fileName: envFile);
+      debugPrint('Loaded environment file: $envFile');
+    } catch (e) {
+      debugPrint('Error loading environment file: $e');
+      rethrow;
     }
   }
+
+  static String get supabaseUrl => dotenv.env['SUPABASE_URL'] ?? '';
+  static String get supabaseAnonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
+  static String get environment => dotenv.env['ENVIRONMENT'] ?? 'development';
+
+  static bool get isDevelopment => environment == 'development';
+  static bool get isStaging => environment == 'staging';
+  static bool get isProduction => environment == 'production';
 }

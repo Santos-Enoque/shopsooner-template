@@ -7,12 +7,11 @@ import 'package:vgv/dependency_injection.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final config = EnvLoader.getConfig('production');
+  await EnvLoader.loadEnv('production');
 
-  await configureDependencies(config: config);
+  await configureDependencies();
 
   await bootstrap(
     () => const App(),
-    config: config,
   );
 }

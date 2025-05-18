@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:vgv/config/app_config.dart';
 
 /// BLoC observer to log state changes and errors
 class AppBlocObserver extends BlocObserver {
@@ -25,9 +24,8 @@ class AppBlocObserver extends BlocObserver {
 
 /// Bootstrap app with environment configuration
 Future<void> bootstrap(
-  FutureOr<Widget> Function() builder, {
-  required AppConfig config,
-}) async {
+  FutureOr<Widget> Function() builder,
+) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
